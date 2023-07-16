@@ -20,7 +20,7 @@ public class GradebookServiceREST extends GradebookService {
 	@Override
 	public void enrollStudent(String student_email, String student_name, int course_id) {
 		
-		//   complete this method in homework 4
+		// completed this method in homework 4
 		// When a student adds a class, a POST is also sent to the Gradebook Service backend
 		// to enroll the student into the gradebook database
 		
