@@ -2,6 +2,7 @@ package com.cst438.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,12 @@ public class CourseController {
 	@Transactional
 	public void updateCourseGrades( @RequestBody CourseDTOG courseDTO, @PathVariable("course_id") int course_id) {
 		
-		//TODO  complete this method in homework 4
+		// completed this method in homework 4
+		for(CourseDTOG.GradeDTO g: courseDTO.grades) {
+			Enrollment e = enrollmentRepository.findByEmailAndCourseId(g.student_email, course_id);
+			e.setCourseGrade(g.grade);
+			enrollmentRepository.save(e);
+		}
 		
 	}
 
